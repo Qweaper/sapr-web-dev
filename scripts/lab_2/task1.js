@@ -6,16 +6,18 @@ function task_1(velosity, funcMode)
         result = velosity * 1000 / 3600;
         console.log(`${velosity} км/ч соответсвтует ${result} м/с`);
         alert(`${velosity} км/ч соответсвтует ${result} м/с`);
-
+        return `${velosity} км/ч соответсвтует ${result} м/с`;
     }
     else if (funcMode === "toKMH")
     {
         result = velosity * 3600 / 1000;
         console.log(`${velosity} м/с соответсвтует ${result} км/ч`);
         alert(`${velosity} м/с соответсвтует ${result} км/ч`);
+        return`${velosity} м/с соответсвтует ${result} км/ч`;
     }
     else{
-        alert('Такого режима нет')
+        alert('Такого режима нет');
+        return 'Такого режима нет';
     }
 }
 
