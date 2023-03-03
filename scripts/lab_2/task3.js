@@ -11,9 +11,9 @@ const objectInfo = function(obj)
     return;
 };
 
-// let student = {
-// group: 201,
-// last_name: "Иванов",
-// first_name: "Иван"
-// };
-// objectInfo(student);
+let student = {
+group: 201,
+last_name: "Иванов",
+first_name: "Иван"
+};
+objectInfo(student);

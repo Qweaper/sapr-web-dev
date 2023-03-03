@@ -20,6 +20,6 @@ function task_1(velosity, funcMode)
 }
 
 
-// let velosity = prompt('Введите скорость');
-// let funcMode = prompt('toKMH - из м в км\ntoMS - из км в м');
-// task_1(velosity, funcMode);
+let velosity = prompt('Введите скорость');
+let funcMode = prompt('toKMH - из м в км\ntoMS - из км в м');
+task_1(velosity, funcMode);

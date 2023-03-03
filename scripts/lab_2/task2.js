@@ -11,10 +11,10 @@ const absValue = function(x)
     
 };
 
-// alert(absValue(1))
-// alert(absValue(2))
-// alert(absValue(-4))
-// alert(absValue(0))
-// alert(absValue(-12))
-// alert(absValue(-0))
-// alert(absValue(+0))
+alert(absValue(1))
+alert(absValue(2))
+alert(absValue(-4))
+alert(absValue(0))
+alert(absValue(-12))
+alert(absValue(-0))
+alert(absValue(+0))
