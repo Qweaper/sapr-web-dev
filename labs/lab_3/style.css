@@ -1,0 +1,72 @@
+:root
+{
+    box-sizing: border-box;
+    --main-color: #8BAAE6;
+    --active-color: #B3CCFF;
+    --inactive-color: #4D6699;
+    --inactive-text: #E6CB91;
+    --active-text: #997D3D;
+}
+
+body{
+    background: var(--main-color);
+    align-items: center;
+}
+
+.vertical-view{
+    list-style: none;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+input{
+    border: none;
+    border: solid #4D6699 2px;
+    border-radius: 5px;
+    background-color: var(--inactive-color);
+    transition: all .5s;
+    color: var(--inactive-text);
+}
+
+header{
+    text-align: center;
+    padding-top: 8px;
+}
+
+input::placeholder{
+    color: var(--inactive-text);
+}
+
+input:hover, .show-button:hover, .validate-sumbit-bttn:hover{
+    background-color: #3a4e76;
+    border: solid var(--active-color) 2px;
+}
+
+.show-button, .validate-sumbit-bttn{
+    border: none;
+    border-radius: 5px;
+    color: var(--inactive-text);
+    background-color: #3a4e76;
+    border: solid var(--main-color) 2px;
+    transition: all .5s;
+}
+
+.form-wrapper{
+    display: flex;
+    border: dashed 1px #4D6699;
+    border-radius: 10px;
+    align-items: center;
+    align-items: center;
+    justify-content: center;    
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+
+    
+    opacity: 0;
+    transition: all .7s;
+}
+
