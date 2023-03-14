@@ -14,7 +14,12 @@ body{
 }
 
 .vertical-view{
+    padding: 0;
     list-style: none;
+}
+
+.labels{
+    visibility: hidden;
 }
 
 li{
@@ -44,29 +49,61 @@ input:hover, .show-button:hover, .validate-sumbit-bttn:hover{
     border: solid var(--active-color) 2px;
 }
 
-.show-button, .validate-sumbit-bttn{
+.show-button, .validate-sumbit-bttn, .show-password-btn{
     border: none;
     border-radius: 5px;
     color: var(--inactive-text);
     background-color: #3a4e76;
     border: solid var(--main-color) 2px;
-    transition: all .5s;
+    transition: all .3s;
 }
 
 .form-wrapper{
     display: flex;
+    
+    background-color: #3a4e76;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+
     border: dashed 1px #4D6699;
     border-radius: 10px;
     align-items: center;
     align-items: center;
     justify-content: center;    
     align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;
 
-    
-    opacity: 0;
-    transition: all .7s;
+    min-width: 350px;
+    max-width: 600px;
+    transition: all .3s;
 }
 
+.form-wrapper-hidden
+{
+    opacity: 0;
+    visibility: hidden;
+} 
+
+.error-message{
+    color: red;
+    min-height: 1.6rem;
+}
+
+.modal{
+    position: absolute;
+    visibility: hidden;
+    top: -1000px;
+}
+
+.modal-visible{
+    visibility: visible;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 1, 0.255);
+}

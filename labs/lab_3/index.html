@@ -9,7 +9,7 @@
     <script defer src="main.js"></script>
     <title>Регистрация</title>
 </head>
-<body>
+<body id="main-body">
     <header class="header-wrapper">
         <label>
             <button class="show-button" value="inactive">Регистрация</button>
@@ -17,28 +17,39 @@
         <hr>
     </header>
     <main>
-        <div class="form-wrapper">
-            <form>
+    <div class="modal" id="modal">
+        <div class="form-wrapper form-wrapper-hidden">
+            <form id="form-elems">
+                <label class="labels" for="emailInput">Почта</label>
+                <label class="labels" for="passwordInput" >Пароль</label>
                 <ul class="vertical-view">
                     <li>
-                        <lable>
-                            <input placeholder="Email" type="text">Почта
-                        </lable>
+                        <input id="emailInput" placeholder="Email" type="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
                     </li>
                     <li>
-                        <lable>
-                            <input id="passwordInput" placeholder="Password" type="password">Пароль
-                        </lable>
+                        <input id="passwordInput" placeholder="Password" type="password" minlength="8" required> 
                     </li>
                     <li>
                         <label><input id='check_boxBTN' type="checkbox" value="false">Показать пароль</label>
                     </li>
                     <li>
-                        <button class="validate-sumbit-bttn">Отправить</button>
+                        <button id="show-password-btn" class="show-password-btn">Показать пароль</button>
+                    </li>
+                    <li>
+                        <button id="validate-sumbit-bttn" class="validate-sumbit-bttn">Отправить</button>
+                    </li>
+                    <li>
+                        <p class="error-message"></p>
                     </li>
                 </ul>
             </form>
         </div>
+    </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam iure quam voluptas dolor dolore, iste accusamus quae facere impedit. Quo, beatae! A, quod reprehenderit! Numquam perferendis praesentium odit blanditiis eveniet earum distinctio aliquam impedit dolor!</p>
+        <p>Mollitia dolorum similique minima nisi maxime. Asperiores voluptas corporis doloremque suscipit modi sed odio quas voluptate iure aperiam fuga hic dolorem ab assumenda optio error architecto reprehenderit, officiis eos exercitationem. Praesentium in est sit quibusdam?</p>
+        <p>Numquam provident assumenda distinctio fugiat cumque necessitatibus amet libero quibusdam! Neque ex quis exercitationem velit eos amet ipsam eaque laborum blanditiis, odio voluptate nesciunt, sapiente delectus accusamus quas! Quis deserunt provident eaque reiciendis distinctio asperiores!</p>
+        <p>Quibusdam labore reiciendis, doloribus pariatur, eius laboriosam, error nisi dolor officia at id praesentium omnis excepturi saepe ducimus odit earum blanditiis alias obcaecati placeat voluptate dolore impedit deleniti unde. Nam blanditiis velit perspiciatis itaque ratione?</p>
+        <p>Non quisquam debitis cupiditate, quibusdam quasi ut, cum animi veritatis libero ducimus commodi consectetur soluta doloribus! Officia unde sapiente dolores, quia incidunt ad obcaecati excepturi at, eius beatae suscipit! Iste inventore sequi vel libero porro!</p>
     </main>
     <footer></footer>
 </body>
