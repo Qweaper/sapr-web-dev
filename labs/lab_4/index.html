@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
-    <title>Регистрация</title>
+    <title>Tree.js lab</title>
 </head>
     <body>
-        
+        <script type="module" src="main.js"></script>
+        <form>
+            <label><input type="radio" value="gray" name="color" checked />Серый</label>
+            <label><input type="radio" value="red" name="color" />Красный</label>
+            <label><input type="radio" value="green" name="color" />Зеленый</label>
+            <label><input type="radio" value="blue" name="color" />Синий</label>
+        </form>
+        <form>
+            <label><input id="spot-light" type="checkbox" value="on" checked>Точечный свет</label>
+            <label><input id="direct-light" type="checkbox" value="on" checked>Направленный свет</label>
+        </form>
     </body>
 </html>

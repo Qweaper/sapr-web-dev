@@ -2,3 +2,16 @@
 {
     box-sizing: border-box;
 }
+
+
+.canvas-frame{
+    background-color: aquamarine;
+    width: 800px;
+    height: 600px;
+}
+
+.canvas-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
