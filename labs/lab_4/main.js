@@ -47,6 +47,7 @@ let material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa }); // создан
 
 let mesh = new THREE.Mesh(geometry, material); // объект фигуры
 mesh.position.set(-5, 0, -5);
+mesh.receiveShadow = true
 
 const spotLight = new THREE.SpotLight("#ffffff"); // создание источника света с белым цветом
 spotLight.position.set(2, 2, 2); // создание позиции
@@ -56,7 +57,7 @@ spotLight.shadow.camera.near = 0.1;
 spotLight.shadow.camera.far = 50;
 spotLight.shadow.mapSize.width = 2048;
 spotLight.shadow.mapSize.height = 2048;
-spotLight.shadow.bias = -0.01;
+// spotLight.shadow.bias = -0.01;
 spotLight.penumbra = 0.5;
 spotLight.target.position.set(0, 0, 0);
 
@@ -100,14 +101,14 @@ let verticalPlane2 = new THREE.Mesh(verticalPlaneGeometry2, verticalPlaneMatiria
 verticalPlane.position.x = 0;
 verticalPlane.position.y = 1;
 verticalPlane.position.z = -3;
-verticalPlane.castShadow = true;
+// verticalPlane.castShadow = true;
 verticalPlane.receiveShadow = true;
 
 verticalPlane2.position.x = -3;
 verticalPlane2.position.y = 2;
 verticalPlane2.position.z = 0;
 verticalPlane2.rotation.y = 4.5;
-verticalPlane2.castShadow = true;
+// verticalPlane2.castShadow = true;
 verticalPlane2.receiveShadow = true;
 
 scene.add(verticalPlane);
@@ -127,7 +128,7 @@ camera.position.set(0, 1, 5);  // установка камеры на пози�
 let renderer = new THREE.WebGLRenderer({ antialias: true });       // рендер сцены
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-renderer.shadowMap.enable = true;
+renderer.shadowMap.enabled = true;
 
 
 function animate() {   //  анимация сцены

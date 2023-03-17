@@ -24,22 +24,22 @@
                 <label class="labels" for="passwordInput" >Пароль</label>
                 <ul class="vertical-view">
                     <li>
-                        <input id="emailInput" placeholder="Email" type="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+                        <input id="emailInput" name="email" placeholder="Email" type="email" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
                     </li>
                     <li>
-                        <input id="passwordInput" placeholder="Password" type="password" minlength="8" required> 
+                        <input id="passwordInput" name="pass" placeholder="Password" type="password" minlength="8" required> 
                     </li>
                     <li>
-                        <label><input id='check_boxBTN' type="checkbox" value="false">Показать пароль</label>
+                        <label><input id='check_boxBTN' name="showPassCheck" type="checkbox" value="false">Показать пароль</label>
                     </li>
                     <li>
-                        <button id="show-password-btn" class="show-password-btn">Показать пароль</button>
+                        <button id="show-password-btn" name="showPassBtn" class="show-password-btn">Показать пароль</button>
                     </li>
                     <li>
-                        <button id="validate-sumbit-bttn" class="validate-sumbit-bttn">Отправить</button>
+                        <button id="validate-sumbit-bttn" name="validateBtn" class="validate-sumbit-bttn">Отправить</button>
                     </li>
                     <li>
-                        <p class="error-message"></p>
+                        <p class="error-message" id="error-message"></p>
                     </li>
                 </ul>
             </form>

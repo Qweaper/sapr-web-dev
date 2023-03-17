@@ -6,7 +6,8 @@ const emailInput = document.getElementById('emailInput');
 const passwordInput = document.getElementById('passwordInput');
 const sumbitButton = document.getElementById('validate-sumbit-bttn');
 const regForm = document.getElementById('form-elems');
-const modalWin = document.getElementById('modal')
+const modalWin = document.getElementById('modal');
+const errorMessage = document.getElementById('error-message');
 
 showButton.addEventListener('click', (event) => 
 {
@@ -40,33 +41,38 @@ showPasswrdBtn.addEventListener('click', (e) => {e.preventDefault();})
 
 
 const validInput = (e) => {
-    console.log(e);
+    errorMessage.innerText = '';
+    errorMessage.style.color = '#f00'
+    let valid = true;
     if (e.target.id === 'emailInput')
     {
-        let email = e.target.value;
-        let pattern = new RegExp('/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i');
-        let example  =
-        console.log(email.match(pattern));
-        if (email.match(pattern) !== null)
+        if (!e.target.validity.typeMismatch)
         {
-            e.target.border = '1px solid #1cd3a2';
+            e.target.style.border = '1px solid #1cd3a2';
         }
         else{
-            e.target.border = '1px solid #f00';
+            e.target.style.border = '1px solid #f00';
+            valid = false;
         }
     }
-    else if (e.target.id === 'passwordInput')
+    if (e.target.id === 'passwordInput')
     {
-        let password = e.target.type;
+        let password = e.target.value;
         if(password.length >= 6)
         {
-            e.target.border = '1px solid #1cd3a2';
+            e.target.style.border = '1px solid #1cd3a2';
         }
         else if(password.length < 6)
         {
-            e.target.border = '1px solid #f00';
+            e.target.style.border = '1px solid #f00';
+            valid = false;
         }
     }
+    if (!valid)
+        {
+            errorMessage.innerText = 'Email or Password are invalid. Please try again.'
+        }
+    console.log(errorMessage.innerText);
 };
 
 emailInput.addEventListener('blur', validInput);
@@ -74,14 +80,17 @@ passwordInput.addEventListener('blur', validInput);
 
 sumbitButton.addEventListener('click', (e) => 
 {   
-    let formData = new FormData(regForm);
-    console.log(formData);
+    let formData = new FormData(regForm); // добавить имена в атрибуты
     for(let [name, value] of formData) {
         console.log(`${name} = ${value}`); // key1=value1, потом key2=value2
     }
     e.preventDefault();
 });
 
-// modalWin.addEventListener('click', (e) => {
-//     modalWin.classList.remove('modal-visible');
-// })
+modalWin.addEventListener('click', (e) => {
+    // отследить таргет, что объект точно фон
+    if(e.target.id === 'modal'){
+        modalWin.classList.toggle('modal-visible');
+        formWrapper.classList.toggle('form-wrapper-hidden');
+    }
+})
