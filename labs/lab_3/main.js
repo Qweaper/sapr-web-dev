@@ -42,37 +42,39 @@ showPasswrdBtn.addEventListener('click', (e) => {e.preventDefault();})
 
 const validInput = (e) => {
     errorMessage.innerText = '';
-    errorMessage.style.color = '#f00'
+    errorMessage.style.color = '#e3256b'
     let valid = true;
     if (e.target.id === 'emailInput')
     {
-        if (!e.target.validity.typeMismatch)
+        
+        if (!e.target.validity.typeMismatch & !e.target.validity.valueMissing) // исправить проверку на пустой 
         {
             e.target.style.border = '1px solid #1cd3a2';
         }
         else{
-            e.target.style.border = '1px solid #f00';
+            
+            e.target.style.border = '1px solid #e3256b';
             valid = false;
         }
     }
     if (e.target.id === 'passwordInput')
     {
-        let password = e.target.value;
-        if(password.length >= 6)
+        if(!e.target.validity.tooShort & !e.target.validity.valueMissing) 
         {
             e.target.style.border = '1px solid #1cd3a2';
         }
-        else if(password.length < 6)
+        else
         {
-            e.target.style.border = '1px solid #f00';
+            e.target.style.border = '1px solid #e3256b';
             valid = false;
         }
     }
     if (!valid)
         {
-            errorMessage.innerText = 'Email or Password are invalid. Please try again.'
+            emailInput.setCustomValidity('Неверный email');
+            passwordInput.setCustomValidity('Пароль должен быть длиннее 5ти символов');
+            errorMessage.innerText = 'Email or Password are invalid.\nPlease try again.'
         }
-    console.log(errorMessage.innerText);
 };
 
 emailInput.addEventListener('blur', validInput);
@@ -80,11 +82,16 @@ passwordInput.addEventListener('blur', validInput);
 
 sumbitButton.addEventListener('click', (e) => 
 {   
-    let formData = new FormData(regForm); // добавить имена в атрибуты
+    let formData = new FormData(regForm); 
     for(let [name, value] of formData) {
-        console.log(`${name} = ${value}`); // key1=value1, потом key2=value2
+        console.log(`${name} = ${value}`); 
     }
-    e.preventDefault();
+    e.preventDefault(); // переделать на событие submit у формы 
+});
+
+regForm.addEventListener('submit', (e) => 
+{   
+    e.preventDefault(); // переделать на событие submit у формы 
 });
 
 modalWin.addEventListener('click', (e) => {
