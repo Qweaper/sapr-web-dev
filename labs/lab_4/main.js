@@ -34,7 +34,7 @@ let custom_geom = new THREE.BufferGeometry();
 custom_geom.setAttribute("position", new THREE.BufferAttribute(new Float32Array(myMeshVert_arr), 3));
 custom_geom.setIndex(myMeshIndices);
 custom_geom.computeVertexNormals();
-let material2 = new THREE.MeshBasicMaterial({ color: 'pink', side: THREE.DoubleSide });
+let material2 = new THREE.MeshPhongMaterial({ color: 'pink', side: THREE.DoubleSide });
 let myMesh = new THREE.Mesh(custom_geom, material2);
 myMesh.position.set(-1, 0.5, 1);
 myMesh.castShadow = true;

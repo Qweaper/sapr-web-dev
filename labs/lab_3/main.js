@@ -47,32 +47,32 @@ const validInput = (e) => {
     if (e.target.id === 'emailInput')
     {
         
-        if (!e.target.validity.typeMismatch & !e.target.validity.valueMissing) // исправить проверку на пустой 
+        if (!e.target.validity.typeMismatch && !e.target.validity.valueMissing) // исправить проверку на пустой 
         {
             e.target.style.border = '1px solid #1cd3a2';
         }
         else{
-            
+            emailInput.setCustomValidity('Неверный email');
             e.target.style.border = '1px solid #e3256b';
             valid = false;
         }
     }
     if (e.target.id === 'passwordInput')
     {
-        if(!e.target.validity.tooShort & !e.target.validity.valueMissing) 
+        console.log(e);
+        if(!e.target.validity.tooShort && !e.target.validity.valueMissing) 
         {
             e.target.style.border = '1px solid #1cd3a2';
         }
         else
         {
+            passwordInput.setCustomValidity('Неверный пароль');
             e.target.style.border = '1px solid #e3256b';
             valid = false;
         }
     }
     if (!valid)
-        {
-            emailInput.setCustomValidity('Неверный email');
-            passwordInput.setCustomValidity('Пароль должен быть длиннее 5ти символов');
+        {            
             errorMessage.innerText = 'Email or Password are invalid.\nPlease try again.'
         }
 };
@@ -86,7 +86,6 @@ sumbitButton.addEventListener('click', (e) =>
     for(let [name, value] of formData) {
         console.log(`${name} = ${value}`); 
     }
-    e.preventDefault(); // переделать на событие submit у формы 
 });
 
 regForm.addEventListener('submit', (e) => 
