@@ -1,0 +1,19 @@
+GET /users HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: : application/json
+###
+GET / HTTP/1.1
+Host: 127.0.0.1:3000
+###
+POST /comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+Content: some_new_Comment
+###
+POST /comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+###
+GET /stats HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
