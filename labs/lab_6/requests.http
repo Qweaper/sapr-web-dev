@@ -1,0 +1,46 @@
+GET /users HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: : application/json
+###
+GET / HTTP/1.1
+Host: 127.0.0.1:3000
+###
+POST /comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+"some new comment"
+###
+POST /comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+"some_old_comment"
+###
+GET /stats HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+###
+GET /API/2/users HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: : application/json
+###
+GET /API/2/ HTTP/1.1
+Host: 127.0.0.1:3000
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+"some new comment"
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+"some_old_comment"
+###
+GET /API/2/stats HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
