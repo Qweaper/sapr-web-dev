@@ -8,11 +8,14 @@ Host: 127.0.0.1:3000
 POST /comments HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
-Content: some_new_Comment
+
+"some new comment"
 ###
 POST /comments HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
+
+"some_old_comment"
 ###
 GET /stats HTTP/1.1
 Host: 127.0.0.1:3000
