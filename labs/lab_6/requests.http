@@ -1,46 +1,33 @@
-GET /users HTTP/1.1
+###
+GET /API/1/users HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: : application/json
 ###
-GET / HTTP/1.1
+GET /API/1/ HTTP/1.1
 Host: 127.0.0.1:3000
 ###
-POST /comments HTTP/1.1
+POST /API/1/comments HTTP/1.1
 Host: 127.0.0.1:3000
-Content-Type: text/html
+Content-Type: application/json
 
-"some new comment"
+{
+    "comments" : ["some new comment", "enother_comment"]
+}
 ###
-POST /comments HTTP/1.1
+POST /API/1/comments HTTP/1.1
 Host: 127.0.0.1:3000
-Content-Type: text/html
+Content-Type: application/json
 
-"some_old_comment"
+{
+    "comments" : ["Like this video!"]
+}
 ###
-GET /stats HTTP/1.1
+POST /API/1/comments HTTP/1.1
 Host: 127.0.0.1:3000
-Content-Type: text/html
+Content-Type: application/json
 
+{"comments":["hello"]}
 ###
-GET /API/2/users HTTP/1.1
-Host: 127.0.0.1:3000
-Content-Type: : application/json
-###
-GET /API/2/ HTTP/1.1
-Host: 127.0.0.1:3000
-###
-POST /API/2/comments HTTP/1.1
-Host: 127.0.0.1:3000
-Content-Type: text/html
-
-"some new comment"
-###
-POST /API/2/comments HTTP/1.1
-Host: 127.0.0.1:3000
-Content-Type: text/html
-
-"some_old_comment"
-###
-GET /API/2/stats HTTP/1.1
+GET /API/1/stats HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html

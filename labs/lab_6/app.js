@@ -1,78 +1,75 @@
 const express = require('express');
+// const bodyParser = require('body-parser')
+
+// const jsonParser = bodyParser.json({
+//     extended: true 
+// })
+
 const {
     genTable,
     data
 } = require('../lab_5/tools');
+
 const app = express();
 
 const host = '127.0.0.1'
 const port = '3000'
-const apiVerRouter = express.Router();
+// const apiVerRouter = express.Router();
+const {apiVerRouter} = require('./router.js')
+app.use('/API/1', apiVerRouter);
 
-app.use('/API/2', apiVerRouter);
+// to do вынести роутер в отдельный файл
 
-app.use((req, res, next) => 
-{
-    data['user-agent-stats'] += 1;
-    next();
-})
-app.use((req, res, next) => 
-{
+app.use((req, res, next) => {
     console.log("Method: ", req.method);
     console.log('Route: ', req.url);
     console.log('Headers: ', req.headers);
     next();
 })
 
-apiVerRouter.use(express.static('./public'));
-
-apiVerRouter.get('/about', () => {
-    req.redirect('/API/2/index.html')
-})
-
-apiVerRouter.get('/stats', (req, res) => 
-{
+apiVerRouter.use((req, res, next) => {
     let headers = req.headers;
     if (headers.hasOwnProperty('user-agent')) {
-        res.setHeader('Content-Type', 'text/html');
         let user_agent_data = headers['user-agent'];
         if (!data['user-agent-stats'].hasOwnProperty(user_agent_data)){
             data['user-agent-stats'][user_agent_data] = 0;
         }
         data['user-agent-stats'][user_agent_data] += 1;
-        res.send(genTable(data['user-agent-stats']));
-}});
+    }
+    next();
+})
 
-apiVerRouter.post('/comments', (req, res) => {
-    let body = '';
-    req.on('data', (chunk) => {
-    body += chunk})
-    res.setHeader("Content-Type", "application/json")
-    req.on("end", ()=>{
-    data['comments'].push(body);
-    console.log(data.comments);
-    res.write(JSON.stringify(data['comments']));
-    res.end();
-    })
+apiVerRouter.use(express.static('./public'));
+
+apiVerRouter.get('/about', () => {
+    req.redirect('/API/1/index.html')
+})
+
+// можно делать через handlebars - шаблонизатор
+apiVerRouter.get('/stats',(req, res) => {
+        res.send(genTable(data['user-agent-stats']));
 });
 
-apiVerRouter.get('/', (req, res) => 
-{
+apiVerRouter.post('/comments', express.json(), (req, res) => {
+    let body = req.body;
+    data['comments'].push(...body['comments']);
+    res.send(JSON.stringify(data['comments']));
+});
+
+apiVerRouter.get('/', (req, res) => {
     res.send('This is my server on Express.JS\nHello Everyone!');
 });
 
-app.get('/*', (req, res) => 
-{
+
+app.use((req, res) => {
     res.status(400).send('Bad request!');
 });
 
-apiVerRouter.get('/*', (req, res) => 
-{
+apiVerRouter.use((req, res) => {
     res.status(400).send('Bad request!');
 });
 
-app.listen(port, host, () => 
-{
-    console.log(`Server is online on ${host}:${port}`);
+app.listen(port, host, () => {
+    console.log(`Server is online on ${host}:${port}\nURL: http://www.localhost:${port}/API/1`);
 });
 
