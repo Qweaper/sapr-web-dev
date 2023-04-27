@@ -1,0 +1,55 @@
+###
+GET /API/1/users HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: : application/json
+//400
+###
+GET /API/1/ HTTP/1.1
+Host: 127.0.0.1:3000
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+    "comments" : ["some new comment", "enother_comment"]
+}
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+    "comments" : ["Like this video!"]
+}
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{"comments":["hello"]}
+//200
+###
+GET /API/1/stats HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//200
+
+###
+GET /login/None HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//400
+###
+GET /API/1/login/secret HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//200
+###
+GET /API/1/login/letMeIn HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//403

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./awsm.css">
+    <script defer src="main.js"></script>
+    <title>Регистрация</title>
+</head>
+
+<!-- переделать порядок путей и методов -->
+<body id="main-body">
+    <h1>My first ver of REST API on Express.JS</h1>
+    <hr>
+    <p>Here is some of my routes:</p>
+    <h2>main route is "/API/1"</h2>
+    <p>others URLs are worked by previous route</p>
+    <ul>
+        <li> GET
+            <ul>
+                <li>/about - returns index.html with main info</li>
+                <li>/stats - returns HTML table with stats</li>
+                <li>/ - returns greetings message</li>
+            </ul>
+        </li>
+        <li> POST
+            <ul>
+                <li><p>/comments - require HTML like text in content message. Returns current list of comments.</p></li>
+            </ul>
+        </li>
+        <li> Others routes will return Error #400 with message "Bad request!"
+        </li>
+    </ul>
+        
+</body>
+</html>
