@@ -44,12 +44,12 @@ Host: 127.0.0.1:3000
 Content-Type: text/html
 //400
 ###
-GET /API/1/login/secret HTTP/1.1
+GET /API/1/login?password=secret HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
 //200
 ###
-GET /API/1/login/letMeIn HTTP/1.1
+GET /API/1/login?password=letMeIn HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
 //403
