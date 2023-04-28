@@ -21,7 +21,7 @@ apiVerRouter.use((req, res, next) => {
 
 // параметры            -- /home/user/:id <=> /home/user/8     => req.params; >>> {...}
 // строка аргументов    -- /home/user     <=> /home/user?id=8  => req.query;  >>> {...}
-apiVerRouter.get('/login', (req, res, next) => { // переписать на аргументы строки
+apiVerRouter.get('/login', (req, res, next) => { // переписать на аргументы строки V 
     let password = req.query['password'];
     if (password === 'secret') 
     {
@@ -36,23 +36,27 @@ apiVerRouter.get('/about', (req, res) => {
     res.redirect('/API/1/index.html')
 })
 
-// можно делать через handlebars - шаблонизатор
 apiVerRouter.get('/stats',(req, res) => {
         res.send(genTable(data['user-agent-stats']));
 });
 
 apiVerRouter.post('/comments', express.json(), (req, res) => {
     let body = req.body;
-    data['comments'].push(...body['comments']);
-    res.send(JSON.stringify(data['comments']));
+    if (body['comments'] === undefined || body['username'] === undefined)
+    {
+        res.status(400).send('Bad request!')
+    }
+    else 
+    {
+        data['comments'].push(...body['comments']);
+        res.send(JSON.stringify(data['comments']));
+    }
 });
 // проверка на наличие неправильных данных в json
-
 
 apiVerRouter.get('/', (req, res) => {
     res.send('This is my server on Express.JS\nHello Everyone!');
 });
-
 
 module.exports = {
     apiVerRouter

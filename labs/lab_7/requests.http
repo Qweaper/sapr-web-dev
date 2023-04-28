@@ -30,7 +30,17 @@ POST /API/1/comments HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: application/json
 
-{"comments":["hello"]}
+{"username": "Vlad","comments":["hello", "Where is my sosages?", "LOL"]}
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+"username": "Vlad",
+"comments":["hello, Everyone"]
+}
 //200
 ###
 GET /API/1/stats HTTP/1.1
