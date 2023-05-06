@@ -1,0 +1,133 @@
+###
+GET /API/1/users HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: : application/json
+//400
+###
+GET /API/1/ HTTP/1.1
+Host: 127.0.0.1:3000
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+    "comments" : ["some new comment", "enother_comment"]
+}
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+    "comments" : ["Like this video!"]
+}
+//200
+###
+POST /API/1/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{"comments":["hello"]}
+//200
+###
+GET /API/1/stats HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//200
+
+###
+GET /login/None HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//400
+###
+GET /API/1/login/secret HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//200
+###
+GET /API/1/login/letMeIn HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+//403
+
+
+
+###
+GET /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+//200
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "userName" : "Liza",
+    "comments" : "some new comment"
+}
+//200
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "userName" : "Artem",
+    "comments" : ["some new comment", "enother_comment"]
+}
+//200
+
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "userName" : "",
+    "comments" : ["some new comment", "enother_comment"]
+}
+//400
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "userName" : "Vlad",
+    "comments" : ""
+}
+//400
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "userName" : "Vlad"
+}
+//400
+###
+POST /API/2/comments HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{   
+    "comments" : "some new comment"
+}
+//400
+
+###
+GET /API/2/comments/645518fab53b242d75047cc7 HTTP/1.1
+Host: 127.0.0.1:3000
+###
+GET /API/2/comments/645526247e9e81d7793ba28a HTTP/1.1
+Host: 127.0.0.1:3000
+###
+GET /API/2/comments/6455261c7e9e81d7793ba289 HTTP/1.1
+Host: 127.0.0.1:3000
