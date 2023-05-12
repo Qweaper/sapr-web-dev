@@ -5,6 +5,7 @@ const { ObjectId } = require('mongodb');
 
 const asyncFindAllComments = async () => {
     try{
+        console.log(mongoClient);
         let connection = await mongoClient.connect();
         let dbObj = connection.db('MyWorkDB').collection('comments');
         return await dbObj.find().toArray();
@@ -19,6 +20,8 @@ const asyncFindAllComments = async () => {
 
 const asyncFindCommentById = async (idValue) => {
     try{
+        console.log(mongoClient);
+
         let connection = await mongoClient.connect()
             let collection = connection.db('MyWorkDB').collection('comments');
             let arr = await collection.findOne({"_id": new ObjectId(idValue)});
@@ -36,6 +39,8 @@ const asyncInsertComment = async (body) => {
     let userName = body['userName']
     let commentText = body['comments']
     try {
+        console.log(mongoClient);
+
         let connection = await mongoClient.connect();
         let dbObj = connection.db('MyWorkDB').collection('comments')
         let result = await dbObj.insertOne(

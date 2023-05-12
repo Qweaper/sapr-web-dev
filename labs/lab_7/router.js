@@ -21,11 +21,11 @@ apiVerRouter.use((req, res, next) => {
 
 // параметры            -- /home/user/:id <=> /home/user/8     => req.params; >>> {...}
 // строка аргументов    -- /home/user     <=> /home/user?id=8  => req.query;  >>> {...}
-apiVerRouter.get('/login', (req, res, next) => { // переписать на аргументы строки V 
+apiVerRouter.use((req, res, next) => { // переписать на аргументы строки V 
     let password = req.query['password'];
     if (password === 'secret') 
     {
-        res.redirect('/API/1/about');
+        next();
     } else {
         res.statusCode=403;
         res.send('Forbidden!');
@@ -40,7 +40,7 @@ apiVerRouter.get('/stats',(req, res) => {
         res.send(genTable(data['user-agent-stats']));
 });
 
-apiVerRouter.post('/comments', express.json(), (req, res) => {
+apiVerRouter.use('/comments', express.json(), (req, res) => {
     let body = req.body;
     if (body['comments'] === undefined || body['username'] === undefined)
     {

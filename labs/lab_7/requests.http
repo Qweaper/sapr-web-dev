@@ -59,7 +59,24 @@ Host: 127.0.0.1:3000
 Content-Type: text/html
 //200
 ###
-GET /API/1/login?password=letMeIn HTTP/1.1
+GET /API/1/login?password=letMeIn&login=vlad HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
 //403
+
+// /API/1/login/;ajfoJFO;f;/profile
+// /API/1/cats/vasya/health
+
+
+// '/login'
+// '/login/:catName/profile'
+
+###
+GET /API/1/about HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html
+
+###
+GET /API/1/about?password=secret HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html

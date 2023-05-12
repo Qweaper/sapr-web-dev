@@ -9,12 +9,13 @@ const app = express();
 const host = '127.0.0.1'
 const port = '3000'
 
+
 //Добавляем Morgan
 app.use(morgan('dev'))
 
 //Добавляем Helmet
 app.use(helmet());
-app.disable('x-powered-by');
+// app.disable('x-powered-by');
 
 app.use('/API/1/', apiVer1Router);
 app.use('/API/2/', apiVer2Router);

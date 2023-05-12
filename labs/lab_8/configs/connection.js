@@ -18,13 +18,6 @@ const mongoClient = new MongoClient("mongodb://127.0.0.1:27017/", {monitorComman
 //     }
 // }
 
-// async function buzz() {
-//     let db = await run()
-//     return async function findAndModify(...args) {
-//         return await db.findAndModify(...args)
-//     }
-// }
-
 module.exports = {
     mongoClient
 };

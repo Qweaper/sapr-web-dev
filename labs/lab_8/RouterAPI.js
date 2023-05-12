@@ -26,24 +26,25 @@ apiVer1Router.use((req, res, next) => {
 });
 
 apiVer1Router
+    .use((req, res, next) => {
+        let password = req.params['password'];
+        if (password === 'secret') 
+        {
+            // res.statusCode = 200;
+            // res.send('Access allowed!');
+            // res.redirect('/API/1/about');
+            next();
+            // return;
+        }
+        res.statusCode=403;
+        res.send('Forbidden!');})
     .get('/about', () => {
         req.redirect('/API/1/index.html')})
     .get('/stats',(req, res) => {
         res.send(genTable(data['user-agent-stats']));})
     .get('/', (req, res) => {
     res.send('This is my server on Express.JS\nHello Everyone!');})
-    .get('/login/:password', (req, res, next) => {
-        let password = req.params['password'];
-        if (password === 'secret') 
-        {
-            res.statusCode = 200;
-            res.send('Access allowed!');
-            // res.redirect('/API/1/about');
-            // next();
-            return;
-        }
-        res.statusCode=403;
-        res.send('Forbidden!');})
+    
     .post('/comments', express.json(), (req, res) => {
         let body = req.body;
         data['comments'].push(...body['comments']);
@@ -54,6 +55,7 @@ apiVer2Router
     .get('/comments', getComments)
     .get('/comments/:id', getCommentsByid)
     .post('/comments', express.json(), addComment);
+
 
 module.exports = {
     apiVer1Router,

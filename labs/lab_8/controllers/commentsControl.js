@@ -28,7 +28,6 @@ async function getCommentsByid(req, res) {
 
 async function addComment(req, res) {
     let body = req.body;
-    console.log(body);
     if (body['comments'] !== "" && body['userName'] !== "" && body['comments'] !== undefined && body['userName'] !== undefined)
     {
         let result = await asyncInsertComment(body);
