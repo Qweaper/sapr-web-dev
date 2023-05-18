@@ -80,3 +80,8 @@ Content-Type: text/html
 GET /API/1/about?password=secret HTTP/1.1
 Host: 127.0.0.1:3000
 Content-Type: text/html
+
+###
+GET /API/1/about?password=letMeIn HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: text/html

@@ -8,3 +8,5 @@ const apiVerRouter = express.Router();
 module.exports = {
     apiVerRouter
 };
+
+// перенести сюда все запросы и потом они добавляются в порядке импорта
