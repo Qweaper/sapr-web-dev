@@ -31,10 +31,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res) => {
+app.use(errorCatcher)
+    .use((req, res) => {
     res.status(400).send('Bad request!');
     })
-    .use(errorCatcher)
+    
 
 app.listen(port, host, () => {
     console.log(`Server is online on ${host}:${port}\nURL: http://www.localhost:${port}/API/1\nor\nURL: http://www.localhost:${port}/API/2`);

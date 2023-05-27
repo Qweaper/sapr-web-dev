@@ -62,13 +62,17 @@ apiVer1Router
 apiVer2Router
     .get('/comments', getComments)
     .get('/comments/:id', getCommentsByid)
-    .post('/comments', express.json(), addComment)
-    .get('/models', express.json(), getModles)
-    .get('/models/:id', express.json(), getModlesById)
-    .use(express.json() ,checkApiKey)
-    .post('/models', express.json(), addModel)
-    .put('/models/:id', express.json(), updateModel)
-    .delete('/models/:id', express.json(), deleteModel);
+    .use(express.json())
+    .post('/comments', addComment)
+    .get('/models', getModles)
+    .get('/models/:id', getModlesById)
+    .use(express.json(), checkApiKey)
+    .post('/models', addModel)
+    .put('/models/:id', updateModel)
+    .delete('/models/:id', deleteModel);
+
+// возвращать API ключ по имени
+// в заголовках ответа
 
 module.exports = {
     apiVer1Router,
