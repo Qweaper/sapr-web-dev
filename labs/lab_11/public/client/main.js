@@ -29,57 +29,69 @@ let someData = [
   { _id: "646795a70bc2f13c2dfaf71e", name: "Square" },
 ];
 
-function renderTable() {}
 
 async function getAllModels() {
-  // try {
-  let res = await fetch("/API/2/models");
-  return await res.json();
+  let res = await fetch('http://www.localhost:3000/API/2/models');
+  return res;
 }
-// let response = someData;
-// if (response.ok || typeof response === 'object') {
-//     if (response.body.lenght !== 0)
-//     // if (response.length !== 0)
-//     {
-//         let tableBody = document.createElement('tbody');
-//         response.body.forEach(element => {
-//         // response.forEach(element => {
-//             let newTr = document.createElement('tr');
-//             let newTd = document.createElement('td');
-//             let buttonDelTd = document.createElement('td');
-//             let btnViewTd = document.createElement('td');
-//             let deleteButton = document.createElement('button');
-//             let viewButton = document.createElement('button');
-//             deleteButton.textContent = 'Delete Model';
-//             viewButton.textContent = 'View model'
-//             buttonDelTd.appendChild(deleteButton);
-//             btnViewTd.appendChild(viewButton);
-//             newTd.textContent = element.name;
-//             newTd.dataset.modelId = element['_id'];
-//             newTr.style.border = '1px solid #000000';
-//             newTr.appendChild(newTd);
-//             newTr.appendChild(btnViewTd);
-//             newTr.appendChild(buttonDelTd);
-//             tableBody.appendChild(newTr);
-//         });
-//         modelsTableInfo.appendChild(tableBody);
-//     }
-//     emptyText.classList.remove('empty-text-visible')
-// }
-// else{
-//     emptyText.classList.add('empty-text-visible');
-// }
-// }
-// catch {
-//     emptyText.classList.add('empty-text-visible');
-//     emptyText.textContent = 'Ошибка запроса!'
-// }
-// };
 
-async function renderList() {
-  let models = await getAllModels();
-  models.forEach((element) => {
+const pullModels = async () => {
+  let response = await getAllModels();
+  if (response.ok || typeof response === 'object') {
+    try{
+      let res = await response.json();
+      res = someData;
+      if (res.length !== 0){
+          let tableBody = await renderList(res);
+          modelsTableInfo.appendChild(tableBody);
+          emptyText.classList.remove('empty-text-visible')
+      }
+      else{
+          emptyText.classList.add('empty-text-visible');
+      }
+    }
+    catch (error) {
+    console.log(error)
+    emptyText.classList.add('empty-text-visible');
+    emptyText.textContent = 'Ошибка запроса!'
+    }
+  }
+}
+
+async function renderList(models) {
+  let tBody = document.createElement('tbody');
+    models.forEach((element) => {
+    for (let i = 0; i < element.lenght; i=i+1) {
+      let tRow = document.createElement('tr');
+
+      let tData = document.createElement('td');
+      let tDelBtn = document.createElement('td');
+      let tViewBtn = document.createElement('td');
+      tData.innerText = element.name;
+      tData.dataset.id = element._id;
+      tRow.appendChild(tData);
+
+      let delBtn = document.createElement('button');
+      delBtn.innerText = 'delete model';
+      tDelBtn.appendChild(delBtn);
+      tDelBtn.style.color = '#bf2233'
+      tRow.appendChild(tDelBtn);
+
+      let viewBtn = document.createElement('button');
+      viewBtn.innerText = 'view model';
+      tViewBtn.appendChild(viewBtn);
+      tRow.appendChild(tViewBtn);
+
+
+      
+      tBody.appendChild(tRow);
+    }
   });
+  return tBody;
 }
 
-renderList();
+async function main() {
+  return await pullModels();
+} 
+
+main()
